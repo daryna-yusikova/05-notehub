@@ -5,7 +5,7 @@ import NoteList from '../NoteList/NoteList';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import Pagination from '../Pagination/Pagination';
 import Modal from '../Modal/Modal';
-import { fetchNotes } from '../../services/noteServises';
+import { fetchNotes } from '../../services/noteService';
 import NoteForm from '../NoteForm/NoteForm';
 import SearchBox from '../SearchBox/SearchBox';
 import { useDebouncedCallback } from 'use-debounce';
