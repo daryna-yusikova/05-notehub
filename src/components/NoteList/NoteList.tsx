@@ -12,8 +12,10 @@ export default function NoteList({ notes }: NoteListProps) {
   const deleteMutation = useMutation({
     mutationFn: deleteNote,
     onSuccess: () => {
-      console.log('Note deleted successfully');
       queryClient.invalidateQueries({ queryKey: ['notes'] });
+    },
+    onError: error => {
+      alert(`Failed to delete note: ${error.message}`);
     },
   });
 

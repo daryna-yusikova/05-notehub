@@ -33,14 +33,15 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
   const mutation = useMutation({
     mutationFn: createNote,
     onSuccess: () => {
-      console.log('Note added successfully');
       queryClient.invalidateQueries({ queryKey: ['notes'] });
+    },
+    onError: error => {
+      alert(`Failed to delete note: ${error.message}`);
     },
   });
 
   const handleSubmit = (values: NewNote, actions: FormikHelpers<NewNote>) => {
     console.log('data:', values);
-    // onSubmit(values);
     mutation.mutate(values);
     actions.resetForm();
     onCancel();
