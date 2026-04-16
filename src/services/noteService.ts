@@ -34,7 +34,7 @@ export async function createNote(newNoteContent: NewNote) {
 
 
 export async function deleteNote(noteToDeleteId: Note['id']) {
-    const { data } = await axios.delete(`/notes/${noteToDeleteId}`);
+    const { data } = await axios.delete<Note>(`/notes/${noteToDeleteId}`);
     return data
 }
 

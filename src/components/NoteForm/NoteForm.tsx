@@ -34,9 +34,10 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
     mutationFn: createNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
+      onCancel();
     },
     onError: error => {
-      alert(`Failed to delete note: ${error.message}`);
+      alert(`Failed to create note: ${error.message}`);
     },
   });
 
@@ -44,7 +45,6 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
     console.log('data:', values);
     mutation.mutate(values);
     actions.resetForm();
-    onCancel();
   };
 
   return (
@@ -68,6 +68,7 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
         <div className={css.formGroup}>
           <label htmlFor={`${fieldID}-content`}>Content</label>
           <Field
+            as="textarea"
             id={`${fieldID}-content`}
             name="content"
             rows={8}

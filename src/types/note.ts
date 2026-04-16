@@ -3,8 +3,8 @@ export interface Note{
     content: string,
     tag: NoteTag
     id: string,
-    createAt: string,
-    updateAt: string,
+    createdAt: string,
+    updatedAt: string,
 }
 
 export interface NewNote{
@@ -14,4 +14,4 @@ export interface NewNote{
 }
 
 
-export type NoteTag = 'Work' | 'Personal' | 'Todo' | 'Shopping' 
+export type NoteTag = 'Work' | 'Personal' | 'Todo' | 'Shopping' | 'Meeting'
